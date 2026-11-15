@@ -1,0 +1,240 @@
+/* =====================================================
+   MindX Cinema - CSS đơn giản cho học sinh
+   Banner tự viết + list phim dùng Bootstrap 6 Carousel
+   ===================================================== */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #141414;
+  color: #ffffff;
+}
+
+/* =====================================================
+   1. BANNER
+   ===================================================== */
+.banner {
+  height: 100vh;
+  min-height: 560px;
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.45) 50%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    url('https://image.tmdb.org/t/p/original/c3tOvnxFp2uUfLs6U8ew52N3FhO.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 0 60px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.logo span {
+  color: #e50914;
+}
+
+.header-icons i {
+  font-size: 22px;
+  margin-left: 22px;
+  cursor: pointer;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100% - 80px);
+  gap: 40px;
+}
+
+.banner-info {
+  max-width: 520px;
+}
+
+.banner-title {
+  font-size: 56px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.banner-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #f0f0f0;
+  margin-bottom: 28px;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+/* Đặt tên banner-btn để KHÔNG đụng class .btn của Bootstrap */
+.banner-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background-color: rgba(40, 40, 40, 0.75);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background-color 0.2s;
+}
+
+.banner-btn:hover {
+  background-color: rgba(70, 70, 70, 0.9);
+  color: #ffffff;
+}
+
+.banner-poster img {
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* =====================================================
+   2. LIST PHIM + BOOTSTRAP 6 CAROUSEL
+   ===================================================== */
+.movie-section {
+  padding: 36px 60px 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Nút prev / next màu đỏ giống ảnh mẫu */
+.movie-nav-btn {
+  color: #e50914 !important;
+  --bs-btn-icon-bg: transparent;
+  --bs-btn-icon-hover-bg: rgba(229, 9, 20, 0.15);
+}
+
+.carousel-nav {
+  display: flex;
+  gap: 4px;
+}
+
+/* Poster trong mỗi carousel-item */
+.movie-poster {
+  height: 400px;
+  object-fit: cover; /* cắt ảnh cho vừa khung, không méo */
+  border-radius: 8px;
+  transition: transform 0.25s;
+  cursor: pointer;
+}
+
+.movie-poster:hover {
+  transform: scale(1.04);
+}
+
+.movie-name {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 13px;
+  color: #cccccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tablet: hiện ít poster hơn */
+@media (max-width: 992px) {
+  .movie-carousel {
+    --bs-carousel-items: 4 !important;
+    --bs-carousel-items-peek: 1.5rem !important;
+  }
+
+  .movie-poster {
+    height: 220px;
+  }
+}
+
+/* Mobile: hiện 2 poster */
+@media (max-width: 576px) {
+  .movie-carousel {
+    --bs-carousel-items: 2 !important;
+    --bs-carousel-items-peek: 1rem !important;
+  }
+
+  .movie-poster {
+    height: 180px;
+  }
+
+  .movie-section {
+    padding: 28px 20px 12px;
+  }
+}
+
+/* =====================================================
+   3. NÚT CHAT NỔI
+   ===================================================== */
+.chat-btn {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 56px;
+  height: 56px;
+  background-color: #e50914;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.chat-btn:hover {
+  background-color: #f40612;
+  color: #ffffff;
+}
+
+/* =====================================================
+   4. RESPONSIVE BANNER
+   ===================================================== */
+@media (max-width: 900px) {
+  .banner {
+    height: auto;
+    min-height: auto;
+    padding: 0 24px 40px;
+  }
+
+  .banner-content {
+    flex-direction: column;
+    height: auto;
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .banner-title {
+    font-size: 40px;
+  }
+
+  .banner-buttons {
+    justify-content: center;
+  }
+
+  .banner-poster img {
+    width: 200px;
+  }
+}
