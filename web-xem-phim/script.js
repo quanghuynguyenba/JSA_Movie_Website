@@ -81,42 +81,43 @@ const popularMovies = [
 
 /* ----- 2. HÀM TẠO HTML CHO 1 PHIM ----- */
 
-function createMovieItem(movie) {
-  return `
-    <div class="carousel-item">
-      <img
-        src="${movie.poster}"
-        class="d-block w-100 movie-poster"
-        alt="${movie.title}"
-      >
-      <p class="movie-name">${movie.title}</p>
-    </div>
-  `;
-}
-
-/* ----- 3. HÀM HIỂN THỊ DANH SÁCH LÊN GIAO DIỆN ----- */
-/*
-  movies  : mảng data mock
-  elementId : id của .carousel-inner trong HTML
-*/
-
-function renderMovies(movies, elementId) {
-  // Lấy thẻ chứa danh sách phim
-  const container = document.getElementById(elementId);
-
-  // Xóa nội dung cũ (nếu có)
-  container.innerHTML = "";
-
-  // Duyệt từng phim trong mảng và ghép HTML
-  let html = "";
-  for (let i = 0; i < movies.length; i++) {
-    html += createMovieItem(movies[i]);
+ function createMovieItem(movie) {
+   return `
+     <div class="carousel-item">
+       <img
+         src="${movie.poster}"
+         class="d-block w-100 movie-poster"
+         alt="${movie.title}"
+       >
+       <p class="movie-name">${movie.title}</p>
+     </div>
+   `;
+ }
+function renderTrendingMovies() {
+  let trendingHTML = '';
+  for (let i = 0; i < trendingMovies.length; i++) {
+    // Lưu ý: Bootstrap Carousel cần class "active" ở phần tử đầu tiên (i === 0) mới hiện hình
+    const activeClass = i === 0 ? 'active' : ''; 
+    trendingHTML += `
+      <div class="carousel-item ${activeClass}">
+        <img src="${trendingMovies[i].poster}" class="d-block w-100 rounded-5" alt="${trendingMovies[i].title}">
+        <p class="movie-name">${trendingMovies[i].title}</p>
+      </div>`;
   }
-
-  // Đưa HTML vào giao diện
-  container.innerHTML = html;
+  document.getElementById("trendingList").innerHTML = trendingHTML;
+}
+function renderPopularMovies() {
+  let popularHTML = '';
+  for (let i = 0; i < popularMovies.length; i++) {
+    popularHTML += `
+      <div class="carousel-item">
+        <img src="${popularMovies[i].poster}" class="d-block w-100 rounded-5" alt="${popularMovies[i].title}">
+        <p class="movie-name">${popularMovies[i].title}</p>
+      </div>`;
+  }
+  document.getElementById("popularList").innerHTML = popularHTML;
 }
 
-/* ----- 4. CHẠY KHI TRANG LOAD XONG ----- */
-renderMovies(trendingMovies, "trendingList");
-renderMovies(popularMovies, "popularList");
+// Gọi hàm để chạy
+renderTrendingMovies();
+renderPopularMovies();
