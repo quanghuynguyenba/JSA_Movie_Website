@@ -81,42 +81,64 @@ const popularMovies = [
 
 /* ----- 2. HÀM TẠO HTML CHO 1 PHIM ----- */
 
-function createMovieItem(movie) {
-  return `
-    <div class="carousel-item">
-      <img
-        src="${movie.poster}"
-        class="d-block w-100 movie-poster"
-        alt="${movie.title}"
-      >
-      <p class="movie-name">${movie.title}</p>
-    </div>
-  `;
-}
+// function createMovieItem(movie) {
+//   return `
+//     <div class="carousel-item">
+//       <img
+//         src="${movie.poster}"
+//         class="d-block w-100 movie-poster"
+//         alt="${movie.title}"
+//       >
+//       <p class="movie-name">${movie.title}</p>
+//     </div>
+//   `;
+// }
 
-/* ----- 3. HÀM HIỂN THỊ DANH SÁCH LÊN GIAO DIỆN ----- */
-/*
-  movies  : mảng data mock
-  elementId : id của .carousel-inner trong HTML
-*/
+// /* ----- 3. HÀM HIỂN THỊ DANH SÁCH LÊN GIAO DIỆN ----- */
+// /*
+//   movies  : mảng data mock
+//   elementId : id của .carousel-inner trong HTML
+// */
 
-function renderMovies(movies, elementId) {
-  // Lấy thẻ chứa danh sách phim
-  const container = document.getElementById(elementId);
+// function renderMovies(movies, elementId) {
+//   // Lấy thẻ chứa danh sách phim
+//   const container = document.getElementById(elementId);
 
-  // Xóa nội dung cũ (nếu có)
-  container.innerHTML = "";
+//   // Xóa nội dung cũ (nếu có)
+//   container.innerHTML = "";
 
-  // Duyệt từng phim trong mảng và ghép HTML
-  let html = "";
-  for (let i = 0; i < movies.length; i++) {
-    html += createMovieItem(movies[i]);
+//   // Duyệt từng phim trong mảng và ghép HTML
+//   let html = "";
+//   for (let i = 0; i < movies.length; i++) {
+//     html += createMovieItem(movies[i]);
+//   }
+
+//   // Đưa HTML vào giao diện
+//   container.innerHTML = html;
+// }
+
+// /* ----- 4. CHẠY KHI TRANG LOAD XONG ----- */
+// renderMovies(trendingMovies, "trendingList");
+// renderMovies(popularMovies, "popularList");
+
+function renderTrendingMovies() {
+  let trendingHTML = '';
+  for(let i = 0; i < trendingMovies.length; i++) {
+    trendingHTML += `<div class="carousel-item"><img src="${trendingMovies[i].poster}" class="d-block w-100 rounded-5" alt="..."></div>`
   }
-
-  // Đưa HTML vào giao diện
-  container.innerHTML = html;
+  console.log(trendingHTML);
+  document.getElementById("trendingList").innerHTML = trendingHTML;
 }
 
-/* ----- 4. CHẠY KHI TRANG LOAD XONG ----- */
-renderMovies(trendingMovies, "trendingList");
-renderMovies(popularMovies, "popularList");
+renderTrendingMovies();
+
+function renderPopularMovies() {
+  let popularHTML = '';
+  for(let i = 0; i < popularMovies.length; i++) {
+    popularHTML += `<div class="carousel-item"><img src="${popularMovies[i].poster}" class="d-block w-100 rounded-5" alt="..."></div>`
+  }
+  console.log(popularHTML);
+  document.getElementById("popularList").innerHTML = popularHTML;
+}
+
+renderPopularMovies();
