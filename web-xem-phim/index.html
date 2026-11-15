@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindX Cinema</title>
+
+    <!-- Bootstrap 6 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+
+    <!-- CSS tự viết (đặt SAU Bootstrap để ghi đè khi cần) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome: icon search, login, play, info, chat... -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ===================== BANNER / HERO ===================== -->
+    <section class="banner">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">Mind<span>X</span> Cinema</div>
+            <div class="header-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-right-to-bracket"></i>
+            </div>
+        </header>
+
+        <!-- Nội dung banner -->
+        <div class="banner-content">
+
+            <div class="banner-info">
+                <h1 class="banner-title">Space Cadet</h1>
+                <p class="banner-desc">
+                    Tess, a young woman from Florida, dreams of becoming an astronaut.
+                    Against all odds, she joins a NASA training program, facing challenges
+                    and forging friendships as she pursues her goal among elite candidates.
+                </p>
+
+                <div class="banner-buttons">
+                    <!-- Dùng class banner-btn (tránh trùng với .btn của Bootstrap) -->
+                    <a href="#" class="banner-btn">
+                        <i class="fa-solid fa-play"></i> Watch Now
+                    </a>
+                    <a href="#" class="banner-btn">
+                        <i class="fa-solid fa-circle-info"></i> View Info
+                    </a>
+                </div>
+            </div>
+
+            <div class="banner-poster">
+                <img src="https://image.tmdb.org/t/p/w500/7QUOIldN6ShKj1LdLhO26a8QXND.jpg" alt="Space Cadet Poster">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================== LIST PHIM - CAROUSEL BOOTSTRAP 6 ===================== -->
+    <!--
+      Cách hoạt động (học sinh cần nhớ):
+      1. Mỗi phim = 1 .carousel-item
+      2. --bs-carousel-items: số poster hiện cùng lúc (Bootstrap 6 mới có)
+      3. --bs-carousel-items-peek: lộ một phần poster kế bên (giống ảnh mẫu)
+      4. Nút prev/next dùng data-bs-target trỏ đúng id carousel
+    -->
+
+    <!-- ----- Trending Movies ----- -->
+    <section class="movie-section">
+
+        <!--
+          data-bs-ends="stop" : đến đầu/cuối danh sách phim thì dừng
+          style CSS variables : chỉnh số item hiển thị + khoảng cách
+        -->
+        <div id="trendingCarousel" class="carousel slide movie-carousel" data-bs-ends="stop"
+            style="--bs-carousel-items: 6; --bs-carousel-items-gap: 1rem; --bs-carousel-items-peek: 2.5rem;">
+
+            <!-- Tiêu đề + nút điều khiển -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title mb-0">Trending Movies</h2>
+
+                <div class="carousel-nav">
+                    <!-- Nút Previous: data-bs-slide="prev" -->
+                    <button class="btn-icon btn-sm movie-nav-btn" type="button" data-bs-target="#trendingCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-icon-prev" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <!-- Nút Next: data-bs-slide="next" -->
+                    <button class="btn-icon btn-sm movie-nav-btn" type="button" data-bs-target="#trendingCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-icon-next" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <!--
+              Danh sách phim để TRỐNG.
+              JavaScript (script.js) sẽ đọc data mock rồi đổ phim vào đây.
+            -->
+            <div class="carousel-inner" id="trendingList"></div>
+        </div>
+    </section>
+
+    <!-- ----- Popular Movies ----- -->
+    <section class="movie-section">
+
+        <div id="popularCarousel" class="carousel slide movie-carousel" data-bs-ends="stop"
+            style="--bs-carousel-items: 6; --bs-carousel-items-gap: 1rem; --bs-carousel-items-peek: 2.5rem;">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title mb-0">Popular Movies</h2>
+
+                <div class="carousel-nav">
+                    <button class="btn-icon btn-sm movie-nav-btn" type="button" data-bs-target="#popularCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-icon-prev" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="btn-icon btn-sm movie-nav-btn" type="button" data-bs-target="#popularCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-icon-next" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- JS sẽ đổ popularMovies vào đây -->
+            <div class="carousel-inner" id="popularList"></div>
+        </div>
+    </section>
+
+    <!-- Nút chat nổi -->
+    <a href="#" class="chat-btn" aria-label="Chat">
+        <i class="fa-solid fa-comment-dots"></i>
+    </a>
+
+    <!--
+      Bootstrap 6 JS: BẮT BUỘC type="module" (ESM-only)
+      Không có type="module" thì carousel sẽ không chạy!
+    -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
