@@ -51,6 +51,15 @@ body {
   cursor: pointer;
 }
 
+.header-login-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header-login-link:hover {
+  color: #e50914;
+}
+
 .banner-content {
   display: flex;
   justify-content: space-between;
@@ -236,5 +245,167 @@ body {
 
   .banner-poster img {
     width: 200px;
+  }
+}
+
+/* =====================================================
+   5. TRANG ĐĂNG NHẬP (chỉ UI)
+   ===================================================== */
+.login-page {
+  min-height: 100vh;
+  /* Nền tối + ảnh phim mờ phía sau */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.88)),
+    url('https://image.tmdb.org/t/p/original/c3tOvnxFp2uUfLs6U8ew52N3FhO.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 24px;
+}
+
+.login-logo {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 32px;
+}
+
+.login-logo:hover {
+  color: #ffffff;
+}
+
+/* Hộp form ở giữa */
+.login-box {
+  width: 100%;
+  max-width: 420px;
+  background-color: rgba(20, 20, 20, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 36px 32px;
+}
+
+.login-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.login-subtitle {
+  color: #aaaaaa;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-label {
+  font-size: 14px;
+  color: #dddddd;
+}
+
+/* Ô input có icon bên trái */
+.login-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1f1f1f;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 0 14px;
+}
+
+.login-input-wrap i {
+  color: #888888;
+  font-size: 14px;
+}
+
+.login-input-wrap:focus-within {
+  border-color: #e50914;
+}
+
+.login-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 14px 0;
+  font-family: inherit;
+}
+
+.login-input::placeholder {
+  color: #666666;
+}
+
+.login-submit {
+  margin-top: 8px;
+  width: 100%;
+  padding: 14px;
+  background-color: #e50914;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-submit:hover {
+  background-color: #f40612;
+}
+
+.login-footer {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.login-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-footer a:hover {
+  color: #e50914;
+}
+
+.login-back {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-back:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 28px 20px;
+  }
+
+  .login-title {
+    font-size: 24px;
   }
 }
