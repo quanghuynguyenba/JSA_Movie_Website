@@ -149,6 +149,16 @@
         integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script>
+        let isLoggedIn = false; // Biến trạng thái đăng nhập (nguoi dung chua dang nhap)
+
+        isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Lấy trạng thái đăng nhập từ localStorage
+
+        if(isLoggedIn == false) {
+            // tro duong dan cua so hien tai sang login.html
+            window.location.href = "login.html"; // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+        }
+    </script>
 </body>
 
 </html>

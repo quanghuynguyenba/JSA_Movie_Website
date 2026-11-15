@@ -34,7 +34,7 @@
               Chưa gắn JS xử lý.
               action="#" chỉ để form hợp lệ về mặt HTML.
             -->
-            <form class="login-form" action="#" method="post">
+            <form class="login-form" submit="onSubmit">
 
                 <!-- Username -->
                 <div class="login-field">
@@ -57,7 +57,7 @@
                 </div>
 
                 <!-- Nút Đăng nhập (chưa có chức năng) -->
-                <button type="button" class="login-submit">
+                <button type="button" class="login-submit" onclick="onSubmit()">
                     Đăng nhập
                 </button>
             </form>
@@ -73,6 +73,27 @@
         </a>
     </div>
 
+    <script>
+        let users = [
+            {
+                username: "admin",
+                password: "admin123"
+            }
+        ]
+
+
+        function onSubmit() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if(users.filter(x => x.username === username && x.password === password).length > 0) {
+               localStorage.setItem('isLoggedIn', 'true'); // Lưu trạng thái đăng nhập vào localStorage
+                window.location.href = "index.html"; // Chuyển hướng đến trang index.html sau khi đăng nhập thành công
+            } else {
+                alert("Sai username hoặc password. Vui lòng thử lại.");
+            }
+        }
+    </script>
 </body>
 
 </html>
